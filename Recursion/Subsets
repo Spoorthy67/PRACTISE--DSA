@@ -1,0 +1,24 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        int n=nums.length;
+        List<List<Integer>> ans=new ArrayList<>();
+        List<Integer> subset=new ArrayList<>();
+        subsetss(nums,0,n,ans,subset);
+
+        return ans;
+        
+    }
+    public void subsetss(int[] nums,int index,int n,List<List<Integer>> ans,List<Integer>list){
+        if(index==n){
+            ans.add(new ArrayList<>(list));
+            return ;
+        }
+
+        subsetss(nums,index+1,n,ans,list);
+
+
+        list.add(nums[index]);
+        subsetss(nums,index+1,n,ans,list);
+        list.remove(list.size() - 1); 
+    }
+}
