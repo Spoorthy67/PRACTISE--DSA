@@ -1,0 +1,14 @@
+class Solution {
+    public int fib(int n) {
+        long[] memo=new long[n+1];
+        Arrays.fill(memo,-1);
+        return (int)helper(n,memo);
+    }
+    public long helper(int n,long[] memo){
+        if(n<=1)return n;
+        if(memo[n]!=-1) return memo[n];
+        memo[n]=helper(n-1,memo)+helper(n-2,memo);
+
+        return memo[n];
+    }
+}
